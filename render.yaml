@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: trigo-face-matcher
+    runtime: node
+    plan: free
+    buildCommand: npm ci --ignore-scripts && npm run models
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.x
+      - key: HOST
+        value: 0.0.0.0
+      - key: FACE_SHARED_SECRET
+        sync: false
